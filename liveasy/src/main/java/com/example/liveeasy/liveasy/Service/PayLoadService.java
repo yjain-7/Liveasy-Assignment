@@ -6,9 +6,9 @@ import com.example.liveeasy.liveasy.Entities.PayLoad;
 
 public interface PayLoadService {
     public List<PayLoad> getLoad();
-    public PayLoad getLoadById(int loadId);
-    public int addLoad(PayLoad payLoad);
-    public void deleteLoad(int parseInt);
-    public void updateLoad(PayLoad payLoad);
+    public PayLoad getLoadById(Integer loadId);
+    public Integer addLoad(PayLoad payLoad);
+    public void deleteLoad(Integer parseInt);
+    public void updateLoad(Integer loadId, PayLoad payLoad);
     
 }

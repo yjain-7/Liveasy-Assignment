@@ -4,8 +4,10 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,10 +22,12 @@ import lombok.NoArgsConstructor;
 // “Date” : “dd-mm-yyyy”
 @Data
 @NoArgsConstructor
+@Entity
 public class PayLoad {
-    private static int nextLoadId = 1;
     @JsonProperty("loadId")
-    private int loadId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer loadId;
 
     @JsonProperty("loadingPoint")
     private String loadingPoint;
@@ -38,10 +42,10 @@ public class PayLoad {
     private String truckType;
     
     @JsonProperty("noOfTrucks")
-    private int noOfTrucks;
+    private Integer noOfTrucks;
     
     @JsonProperty("weight")
-    private double weight;
+    private Double weight;
     
     @JsonProperty("comment")
     private String comment;
@@ -54,7 +58,6 @@ public class PayLoad {
 
     public PayLoad(String loadingPoint, String unloadingPoint, String productType, String truckType, int noOfTrucks,
             double weight, String comment, String shipperId, LocalDate date) {
-        this.loadId = getNextLoadId();
         this.loadingPoint = loadingPoint;
         this.unloadingPoint = unloadingPoint;
         this.productType = productType;
@@ -64,10 +67,6 @@ public class PayLoad {
         this.comment = comment;
         this.shipperId = shipperId;
         this.date = date;
-    }
-
-    private int getNextLoadId() {
-        return nextLoadId++;
     }
 
 

@@ -53,8 +53,8 @@ public class Controller {
     }
 
     @PutMapping("/load/{loadId}")
-    public String puttLoad(@RequestBody PayLoad payLoad){
-        this.service.updateLoad(payLoad);
+    public String puttLoad(@PathVariable String loadId, @RequestBody PayLoad payLoad){
+        this.service.updateLoad(Integer.parseInt(loadId),payLoad);
         return "Updated Successfully";
     }
 }
