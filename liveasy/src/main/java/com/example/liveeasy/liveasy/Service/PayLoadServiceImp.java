@@ -1,7 +1,5 @@
 package com.example.liveeasy.liveasy.Service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +38,9 @@ public class PayLoadServiceImp implements PayLoadService {
     public void updateLoad(Integer loadId, PayLoad payLoad) {
         if(payLoadDao.existsById(loadId)){
             payLoad.setLoadId(loadId); // Set the ID of the payload to the loadId
-
             // Save the updated payload
             payLoadDao.save(payLoad);
         }
     }
 
-
-    
 }
